@@ -1,3 +1,17 @@
+## ivdnt-pie (v1.0)
+Python 3.10
+This version of PIE adds the following:
+- Logging info displaying once again in Python 3.10
+- Freezes the pip requirements
+- Fixes empty pos and lemma not being registered as tasks (by still taking into account their \t)
+- Attentional decoder now truncates to the length of the longest known token from training, instead of a hard limit of 20 chars. Truncating still occurs if the lemma it would need to produce is longer than any seen in the train set.
+- Doesn't tokenize word boundaries on the following 4 punctuation marks: [ ] ' -
+  - Previously PIE would split on spaces, then perform an extra split on punctuation. However, we want to exclude the following cases and see them as 1 token: 't, Oorlogh-schepen, ghega[e]n
+- Doesn't tokenize word boundaries for any punctuation mark that occurs in a number. E.g.: €1,50
+- Added Bayesian Optimized HyperBand (BOHB).
+- Uses the decoder optimizations by [PaPie](https://github.com/lascivaroma/PaPie/blob/a9b12f8847c98902e5f309ee83a1462d336264cf/pie/models/decoder.py#L317).
+
+_Original readme from the [PIE repository](https://github.com/emanjavacas/pie) below._
 
 # PIE: A Framework for Joint Learning of Sequence Labeling Tasks
 
