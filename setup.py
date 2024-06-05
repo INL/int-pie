@@ -19,7 +19,7 @@ DESCRIPTION = 'A Framework for Joint Learning of Sequence Labeling Tasks'
 URL = 'https://github.com/inl/int-pie'
 AUTHOR = 'Enrique Manjavacas; Mike Kestemont; Thibault Clerice; Vincent Prins'
 REQUIRES_PYTHON = '>=3.10.0'
-VERSION = "0.9.0"
+VERSION = ""
 
 # What packages are required for this module to be executed?
 

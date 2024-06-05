@@ -1,4 +1,4 @@
-# int-pie (0.9.0)
+# int-pie
 This version of PIE adds the following:
 - Logging info displaying once again in Python 3.10
 - Freezes the pip requirements
