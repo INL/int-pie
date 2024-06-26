@@ -85,7 +85,7 @@
     "releaseNotes": "https://github.com/INL/int-pie/releases",
     "targetProduct": [
         {
-            "@type": "ConsoleApplication",
+            "@type": "CommandLineApplication",
             "name": "train",
             "provider": "https://www.ivdnt.org",
             "consumesData": [
@@ -100,7 +100,7 @@
             ]
         },
         {
-            "@type": "ConsoleApplication",
+            "@type": "CommandLineApplication",
             "name": "tag",
             "provider": "https://www.ivdnt.org",
             "consumesData": [
@@ -117,7 +117,7 @@
             ]
         },
         {
-            "@type": "ConsoleApplication",
+            "@type": "CommandLineApplication",
             "name": "evaluate",
             "provider": "https://www.ivdnt.org",
             "consumesData": [
@@ -133,183 +133,157 @@
             "@type": "SoftwareApplication",
             "identifier": "click",
             "name": "click",
-            "runtimePlatform": "Python 3",
-            "version": "8.1.7"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "filelock",
             "name": "filelock",
-            "runtimePlatform": "Python 3",
-            "version": "3.13.1"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "fsspec",
             "name": "fsspec",
-            "runtimePlatform": "Python 3",
-            "version": "2023.12.1"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "gensim",
             "name": "gensim",
-            "runtimePlatform": "Python 3",
-            "version": "4.3.2"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "jinja2",
             "name": "jinja2",
-            "runtimePlatform": "Python 3",
-            "version": "3.1.3"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "joblib",
             "name": "joblib",
-            "runtimePlatform": "Python 3",
-            "version": "1.3.2"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "json-minify",
             "name": "json-minify",
-            "runtimePlatform": "Python 3",
-            "version": "0.3.0"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "lxml",
             "name": "lxml",
-            "runtimePlatform": "Python 3",
-            "version": "4.9.3"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "markupsafe",
             "name": "markupsafe",
-            "runtimePlatform": "Python 3",
-            "version": "2.1.3"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "mpmath",
             "name": "mpmath",
-            "runtimePlatform": "Python 3",
-            "version": "1.3.0"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "networkx",
             "name": "networkx",
-            "runtimePlatform": "Python 3",
-            "version": "3.2.1"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "numpy",
             "name": "numpy",
-            "runtimePlatform": "Python 3",
-            "version": "1.26.2"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "pyyaml",
             "name": "pyyaml",
-            "runtimePlatform": "Python 3",
-            "version": "6.0.1"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "scikit-learn",
             "name": "scikit-learn",
-            "runtimePlatform": "Python 3",
-            "version": "1.3.2"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "scipy",
             "name": "scipy",
-            "runtimePlatform": "Python 3",
-            "version": "1.11.4"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "smart-open",
             "name": "smart-open",
-            "runtimePlatform": "Python 3",
-            "version": "6.4.0"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "sympy",
             "name": "sympy",
-            "runtimePlatform": "Python 3",
-            "version": "1.12"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "termcolor",
             "name": "termcolor",
-            "runtimePlatform": "Python 3",
-            "version": "2.4.0"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "terminaltables",
             "name": "terminaltables",
-            "runtimePlatform": "Python 3",
-            "version": "3.1.10"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "threadpoolctl",
             "name": "threadpoolctl",
-            "runtimePlatform": "Python 3",
-            "version": "3.2.0"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "torch",
             "name": "torch",
-            "runtimePlatform": "Python 3",
-            "version": "2.2.1+cu121"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "torchaudio",
             "name": "torchaudio",
-            "runtimePlatform": "Python 3",
-            "version": "2.2.1+cu121"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "torchvision",
             "name": "torchvision",
-            "runtimePlatform": "Python 3",
-            "version": "0.17.1+cu121"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "tqdm",
             "name": "tqdm",
-            "runtimePlatform": "Python 3",
-            "version": "4.66.1"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "typing",
             "name": "typing",
-            "runtimePlatform": "Python 3",
-            "version": "3.7.4.3"
+            "runtimePlatform": "Python 3"
         },
         {
             "@type": "SoftwareApplication",
             "identifier": "typing-extensions",
             "name": "typing-extensions",
-            "runtimePlatform": "Python 3",
-            "version": "4.8.0"
+            "runtimePlatform": "Python 3"
         }
     ]
 }
