@@ -385,14 +385,29 @@ class BOHB:
             pbounds=dims,
             allow_duplicate_points=True,
         )
-        # register history
+        # dedupe history, taking only the best loss
+        histories: dict[dict, list[float]] = {}
         for v in self.history.values():
             # only register the dimensions that are in the dropout
             dims_history = {k: v.bayes_config[k] for k in dims}
+            tup_history = tuple(sorted(dims_history.items()))
+            if tup_history not in histories:
+                histories[tup_history] = []
+            histories[tup_history].append(v.loss)
+
+        print(f"+++ {len(histories)} unique configs out of {len(self.history)} +++")
+
+        # reduce the list[float] to the top loss
+        for k, v in histories.items():
+            histories[k] = max(v)
+
+        # register history
+        for k, v in histories.items():
             bayes.register(
-                params=dims_history,
-                target=v.loss,
+                params=dict(k),
+                target=v,
             )
+
         dropout_suggestion = bayes.suggest(utility)
         # fill in the missing dimensions using self.best_candidate
         print(f"+++ Dropout suggestion: {dropout_suggestion} +++")
