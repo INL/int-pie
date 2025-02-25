@@ -283,7 +283,7 @@ class BOHB:
         # other brackets: modelled by the GP
         for c_i in range(num_halving_candidates):
             print(
-                f"+++ Bracket {self.bracket} (h{self.halving+1}/{self.bracket+1}) (c{c_i+1}/{num_halving_candidates}) (b{indiv_halving_budget})+++"
+                f"+++ Bracket {self.bracket} (h{self.halving + 1}/{self.bracket + 1}) (c{c_i + 1}/{num_halving_candidates}) (b{indiv_halving_budget})+++"
             )
 
             # Generate a new candidate in the first halving each bracket.
@@ -307,6 +307,9 @@ class BOHB:
         if self.warm_start:
             c = self.warm_candidate()
             self.candidates.append(c)
+            if self.enable_bayes_dropout:
+                # use the warm candidate as the best candidate
+                self.best_candidate = c
             self.warm_start = False
             return c
 

@@ -222,7 +222,6 @@ if __name__ == "__main__":
     settings = settings_from_file(args.config_path)
 
     if args.opt_path:
-        opt = optimize.read_opt(args.opt_path)
-        optimize.run_optimize(run, settings, opt, args.n_iter)
+        optimize.run_optimize(run, settings)
     else:
         run(settings)
