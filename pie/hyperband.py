@@ -311,10 +311,12 @@ class BOHB:
                 # use the warm candidate as the best candidate
                 self.best_candidate = c
             self.warm_start = False
+            print(f"+++ Using warm candidate +++")
             return c
 
         config = {}
         if not self.history:
+            print(f"+++ Random candidate +++")
             config = self.random_bayes.suggest(utility)
         else:
             config = (
@@ -371,6 +373,7 @@ class BOHB:
 
     def dropout_bayes(self) -> dict:
         if random.random() < 0.1:
+            print(f"+++ Random candidate +++")
             return self.random_bayes.suggest(utility)
         # choose self.dropout_dims random dimensions
         bounds = PieSpace.get_bounds()
@@ -392,6 +395,8 @@ class BOHB:
             )
         dropout_suggestion = bayes.suggest(utility)
         # fill in the missing dimensions using self.best_candidate
+        print(f"+++ Dropout suggestion: {dropout_suggestion} +++")
+        print(f"+++ Best candidate: {self.best_candidate.bayes_config} +++")
         result = (
             self.best_candidate.bayes_config
             if self.best_candidate
@@ -399,6 +404,8 @@ class BOHB:
         )
         for k in dims:
             result[k] = dropout_suggestion[k]
+
+        print(f"+++ Merged config: {result} +++")
         return result
 
     def register(self, candidate: "Candidate"):
