@@ -206,7 +206,7 @@ class BOHB:
         self.gp_opt_only = gp_opt_only
         self.warm_start = warm_start
         # Number of dimensions kept in dropout bayes
-        self.dropout_dims = 9
+        self.dropout_dims = 1
         self.base_epochs = 10
 
     def run(self):
@@ -401,6 +401,14 @@ class BOHB:
         # reduce the list[float] to the top loss
         for k, v in histories.items():
             histories[k] = max(v)
+
+        avg_history_loss = sum(histories.values()) / len(histories)
+        print(f"+++ Average history loss: {avg_history_loss} +++")
+
+        # only register history above average
+        histories = {k: v for k, v in histories.items() if v > avg_history_loss}
+
+        print(f"+++ {len(histories)} unique configs above average +++")
 
         # register history
         for k, v in histories.items():
