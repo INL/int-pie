@@ -207,6 +207,7 @@ class BOHB:
         self.warm_start = warm_start
         # Number of dimensions kept in dropout bayes
         self.dropout_dims = 9
+        self.base_epochs = 10
 
     def run(self):
         # the hyperband convention is to go reverse.
@@ -290,7 +291,7 @@ class BOHB:
             c = self.new_candidate() if self.halving == 0 else self.candidates[c_i]
 
             # Run
-            c.run(indiv_halving_budget)
+            c.run(self.base_epochs + indiv_halving_budget)
 
             # Register the loss in the GP, except for the first halving of the first bracket.
             if not self.is_very_first_halving():
