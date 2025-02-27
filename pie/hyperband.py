@@ -406,7 +406,8 @@ class BOHB:
         print(f"+++ Average history loss: {avg_history_loss} +++")
 
         # only register history above average
-        histories = {k: v for k, v in histories.items() if v > avg_history_loss}
+        # Note the >=, since there could be only 1 config.
+        histories = {k: v for k, v in histories.items() if v >= avg_history_loss}
 
         print(f"+++ {len(histories)} unique configs above average +++")
 
