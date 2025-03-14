@@ -19,14 +19,12 @@ import random
 import functools
 
 # Third-party
-from bayes_opt import BayesianOptimization, UtilityFunction
+from bayes_opt import BayesianOptimization
 
 # Local
 from pie import utils
 from pie.settings import check_settings, merge_task_defaults
 from pie.settings import Settings
-
-utility = UtilityFunction(kind="ucb", kappa=2.5, xi=0.0)
 
 # We can't use -inf as a threshold, because the GP can't handle it.
 INFINITY = -100
@@ -318,12 +316,12 @@ class BOHB:
         config = {}
         if not self.history:
             print(f"+++ Random candidate +++")
-            config = self.random_bayes.suggest(utility)
+            config = self.random_bayes.suggest()
         else:
             config = (
                 self.dropout_bayes()
                 if self.enable_bayes_dropout
-                else self.bayes.suggest(utility)
+                else self.bayes.suggest()
             )
         c = Candidate(
             bayes_config=config,
@@ -375,7 +373,7 @@ class BOHB:
     def dropout_bayes(self) -> dict:
         if random.random() < 0.1:
             print(f"+++ Random candidate +++")
-            return self.random_bayes.suggest(utility)
+            return self.random_bayes.suggest()
         # choose self.dropout_dims random dimensions
         bounds = PieSpace.get_bounds()
         dims: dict = {
@@ -418,14 +416,14 @@ class BOHB:
                 target=v,
             )
 
-        dropout_suggestion = bayes.suggest(utility)
+        dropout_suggestion = bayes.suggest()
         # fill in the missing dimensions using self.best_candidate
         print(f"+++ Dropout suggestion: {dropout_suggestion} +++")
         print(f"+++ Best candidate: {self.best_candidate.bayes_config} +++")
         result = (
             self.best_candidate.bayes_config
             if self.best_candidate
-            else self.random_bayes.suggest(utility)
+            else self.random_bayes.suggest()
         )
         for k in dims:
             result[k] = dropout_suggestion[k]
