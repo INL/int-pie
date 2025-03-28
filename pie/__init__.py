@@ -16,12 +16,3 @@ We won't be able to check compatibility between pretrained models and `pie` vers
 """)
         __commit__ = None
 
-from . import utils
-from . import trainer
-from . import settings
-from . import tagger
-from . import initialization
-from . import optimize
-from .data import *
-from .models import *
-from .pretrain_encoder import Encoder
