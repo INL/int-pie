@@ -1,6 +1,6 @@
 # int-pie
 This version of PIE adds the following:
-- Logging info displaying once again in Python 3.10
+- Updated to python 3.13.2
 - Freezes the pip requirements
 - Fixes empty pos and lemma not being registered as tasks (by still taking into account their \t)
 - Attentional decoder now truncates to the length of the longest known token from training, instead of a hard limit of 20 chars. Truncating still occurs if the lemma it would need to produce is longer than any seen in the train set.
@@ -10,7 +10,7 @@ This version of PIE adds the following:
 - Uses the decoder optimizations by [PaPie](https://github.com/lascivaroma/PaPie/blob/a9b12f8847c98902e5f309ee83a1462d336264cf/pie/models/decoder.py#L317).
 
 ## Requirements
-- Python 3.10
+- Python 3.13.2
 
 _Original readme from the [PIE repository](https://github.com/emanjavacas/pie) below._
 
