@@ -105,8 +105,8 @@ class Beam(object):
 
         hypothesis = []
         for step in range(len(self) - 1, -1, -1):
-            hypothesis.append(self.beam_values[step+1][idx].item())
-            idx = self.get_source_beam(step=step)[idx]
+            hypothesis.append(self.beam_values[step + 1][idx].item())
+            idx = self.get_source_beam(step=step).to(torch.int32)[idx]
         return hypothesis[::-1]
 
     def decode(self, n=1):

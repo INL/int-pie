@@ -145,7 +145,7 @@ class CRFDecoder(nn.Module):
 
         # iterate from tag to next tag
         for t in range(seq_len - 1):
-            curr_tag, next_tag = targets[t], targets[t+1]
+            curr_tag, next_tag = targets[t], targets[t + 1]
             # from current transition scores (batch, 1, vocab) => (batch, vocab)
             trans_score = trans.gather(
                 1, curr_tag.view(batch, 1, 1).expand(batch, 1, vocab)
@@ -154,8 +154,8 @@ class CRFDecoder(nn.Module):
             trans_score = trans_score.gather(1, next_tag.view(batch, 1)).squeeze(1)
             # (batch)
             emit_score = logits[t].gather(1, curr_tag.view(batch, 1)).squeeze(1)
-            score = score + (trans_score * mask[t+1]) + (emit_score * mask[t])
-            
+            score = score + (trans_score * mask[t + 1]) + (emit_score * mask[t])
+
         # last step
         last_target_index = mask.sum(0).long() - 1
         # (batch)
@@ -204,10 +204,10 @@ class CRFDecoder(nn.Module):
             # get this batch logits
             tag_sequence.fill_(-10000)
             tag_sequence[0, start_tag] = 0.
-            tag_sequence[1:seq_len+1, :vocab] = logits_b[:seq_len]
-            tag_sequence[seq_len+1, end_tag] = 0.
+            tag_sequence[1:seq_len + 1, :vocab] = logits_b[:seq_len]
+            tag_sequence[seq_len + 1, end_tag] = 0.
 
-            path, score = torch_utils.viterbi_decode(tag_sequence[:seq_len+2], trans)
+            path, score = torch_utils.viterbi_decode(tag_sequence[:seq_len + 2], trans)
             hyps.append(self.label_encoder.inverse_transform(path[1:-1]))
             scores.append(score)
 
@@ -497,7 +497,7 @@ class AttentionalDecoder(nn.Module):
                 # advance
                 beam.advance(probs[:, i])
                 # rearrange
-                sbeam = beam.get_source_beam()
+                sbeam = beam.get_source_beam().to(torch.int32)
                 if isinstance(hidden, tuple):
                     hidden[0][:, :, i].copy_(hidden[0][:, :, i].index_select(1, sbeam))
                     hidden[1][:, :, i].copy_(hidden[1][:, :, i].index_select(1, sbeam))
@@ -519,6 +519,6 @@ class AttentionalDecoder(nn.Module):
             hyps.append(bhyps)
 
         hyps = [self.label_encoder.stringify(hyp) for hyp in hyps]
-        scores = [s/(len(hyp) + TINY) for s, hyp in zip(scores, hyps)]
+        scores = [s / (len(hyp) + TINY) for s, hyp in zip(scores, hyps)]
 
         return hyps, scores
